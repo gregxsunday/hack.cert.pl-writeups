@@ -6,11 +6,11 @@ https://lottery.pwning2016.p4.team/
 
 W zadaniu mamy do czynienia z generatorem liczb losowych. Z w pliku *server.js* widzimy w jaki sposób generowane są liczby.
 ```javascript
-	var seed = new Date().valueOf() & 0xFFFFFFFF;
-	var rnd = betterRand(seed)
-    var userId = new Buffer(seed.toString()+","+rnd.next().value).toString("base64")
+var seed = new Date().valueOf() & 0xFFFFFFFF;
+var rnd = betterRand(seed)
+var userId = new Buffer(seed.toString()+","+rnd.next().value).toString("base64")
     
-    var numbers = Array.from(Array(6)).map(() => Math.floor(rnd.next().value * 89 + 10))
+var numbers = Array.from(Array(6)).map(() => Math.floor(rnd.next().value * 89 + 10))
 ```
 Na pierwszy rzut oka wydaje się, że problemem może być uzyskanie dokładnie takiego samego timestampa, jednak możemy odczytać go z *userID* podanego na stronie.
 
